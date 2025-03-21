@@ -45,7 +45,7 @@ jobs:
 
       - name: Build Docker image with version
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/testapi:${{ steps.vars.outputs.VERSION }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/testapi:${{ steps.get-latest-tag.outputs.tag }} .
           docker tag ${{ secrets.DOCKER_USERNAME }}/testapi:${{ steps.get-latest-tag.outputs.tag }} ${{ secrets.DOCKER_USERNAME }}/testapi:latest
 
       - name: Push both versioned and latest Docker images
